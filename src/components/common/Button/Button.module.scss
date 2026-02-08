@@ -1,0 +1,58 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.button {
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: $radius-md;
+  border: 2px solid;
+  cursor: pointer;
+  transition: all $transition-normal ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.primary {
+  background-color: $color-text-primary;
+  color: $color-bg-card;
+  border-color: transparent;
+
+  &:hover {
+    border-color: $color-text-primary;
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  color: $color-text-primary;
+  border-color: $color-text-primary;
+
+  &:hover {
+    background-color: $color-text-primary;
+    color: $color-bg-card;
+  }
+}
+
+.sm {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.md {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.lg {
+  padding: 16px 32px;
+  font-size: 18px;
+}

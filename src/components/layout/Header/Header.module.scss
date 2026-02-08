@@ -1,0 +1,88 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-header;
+  padding: 16px 24px;
+  transition: background-color $transition-normal ease, box-shadow $transition-normal ease;
+
+  &.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: $shadow-nav;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include large-desktop {
+    max-width: 1920px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    gap: 32px;
+  }
+}
+
+.navLink {
+  color: $color-text-primary;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color $transition-fast ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $color-text-primary;
+    transition: width $transition-fast ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  &:hover {
+    color: $color-text-secondary;
+  }
+}
+
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.menuLine {
+  width: 24px;
+  height: 2px;
+  background-color: $color-text-primary;
+  transition: all $transition-fast ease;
+}

@@ -1,0 +1,24 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: $radius-sm;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.clockIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.timeText {
+  white-space: nowrap;
+}

@@ -1,7 +1,7 @@
 // Import SCSS files
-@import './variables';
-@import './mixins';
-@import './reset';
+@use './variables' as *;
+@use './mixins' as *;
+@use './reset' as *;
 
 // Global styles
 body {

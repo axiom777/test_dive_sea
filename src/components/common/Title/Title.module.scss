@@ -1,0 +1,57 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.title {
+  font-weight: 600;
+  line-height: 1.2;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+.h1 {
+  font-size: 32px;
+
+  @include tablet {
+    font-size: 48px;
+  }
+
+  @include desktop {
+    font-size: 64px;
+  }
+
+  @include large-desktop {
+    font-size: 72px;
+  }
+}
+
+.h2 {
+  font-size: 28px;
+
+  @include tablet {
+    font-size: 36px;
+  }
+
+  @include desktop {
+    font-size: 48px;
+  }
+
+  @include large-desktop {
+    font-size: 56px;
+  }
+}
+
+.h3 {
+  font-size: 24px;
+
+  @include tablet {
+    font-size: 28px;
+  }
+
+  @include desktop {
+    font-size: 32px;
+  }
+
+  @include large-desktop {
+    font-size: 36px;
+  }
+}

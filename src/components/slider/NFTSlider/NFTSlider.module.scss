@@ -1,0 +1,58 @@
+@use '@styles/variables' as *;
+@use '@styles/mixins' as *;
+
+.slider {
+  padding: 120px 24px 48px;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @include large-desktop {
+    max-width: 1920px;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0 0 32px 0;
+
+  @include tablet {
+    font-size: 40px;
+  }
+
+  @include desktop {
+    font-size: 48px;
+  }
+}
+
+.sliderContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.slide {
+  width: 100%;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  padding: 48px;
+  font-size: 18px;
+  color: $color-text-secondary;
+}
+
+.error {
+  color: #dc3545;
+}
