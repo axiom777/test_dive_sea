@@ -42,13 +42,22 @@ A deploy script has been added to [`package.json`](package.json):
 3. Under **Build and deployment**, select **GitHub Actions** as the source
 4. Save the settings
 
-### Step 2: Update Base Path (if needed)
+### Step 2: Configure Environment Protection (if needed)
 
-If your repository name is different from `MorozovaIP`, update the `base` path in [`vite.config.ts`](vite.config.ts:8):
+If you see an error like "Branch 'main' is not allowed to deploy to github-pages due to environment protection rules", you have two options:
 
-```typescript
-base: '/your-repo-name/',
-```
+**Option A: Remove Environment Protection Rules**
+1. Go to **Settings** → **Environments**
+2. Click on `github-pages` environment
+3. Under **Deployment branches**, remove any restrictions or change to "No restrictions"
+4. Save the changes
+
+**Option B: Approve Deployment Manually**
+1. Go to the **Actions** tab
+2. Click on the failed workflow run
+3. Click on the "deploy" job
+4. Click **Review deployments**
+5. Approve the deployment
 
 ### Step 3: Push to Main Branch
 
