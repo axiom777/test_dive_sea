@@ -5,7 +5,6 @@ const BOTTOM_MENU = [
   { name: "Privacy Policy", href: "#privacy" },
   { name: "Terms & Conditions", href: "#terms" },
   { name: "About Us", href: "about" },
-  { name: "Privacy Policy", href: "#privacy" },
   { name: "Contact", href: "#contact" },
 ]
 

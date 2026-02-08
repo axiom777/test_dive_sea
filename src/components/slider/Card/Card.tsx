@@ -28,7 +28,7 @@ export const Card: React.FC<CardProps> = ({ data }) => {
         <div className={styles.bidInfo}>
           <span className={styles.bidLabel}>Current bid</span>
           <div className={styles.bidPrice}>
-            <svg className={styles.ethIcon} width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className={styles.ethIcon} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M11.0014 1.6045L5.27222 11.2295L11.0014 14.667L16.7306 11.2295L11.0014 1.6045ZM5.27222 12.3753L11.0014 20.3962L16.7306 12.3753L11.0014 15.8128L5.27222 12.3753Z" fill="currentColor" />
             </svg>
             <span className={styles.bidAmount}>{data.currentBid.toFixed(2)} ETH</span>

@@ -11,9 +11,8 @@ export const nftApi = createApi({
     getNFTs: builder.query<Item[], void>({
       query: () => '/nfts/list',
       transformResponse: (response: CoinGeckoNFT[]) => {
-        console.log(response)
         // Transform data and add random values
-        return response.slice(0, 10).map((item, index) => ({
+        return response.map((item, index) => ({
           id: item.id,
           name: item.name,
           symbol: item.symbol,

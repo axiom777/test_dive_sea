@@ -27,22 +27,22 @@
   }
 }
 
-.sliderContainer {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-
-  @include tablet {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include desktop {
-    grid-template-columns: repeat(4, 1fr);
+.sliderWrapper {
+  width: 100%;
+  position: relative;
+  :global {
+    .swiper {
+      width: 100%;
+      padding: 50px 0;
+      overflow: visible;
+      margin: -50px 0;
+    }
   }
 }
 
 .slide {
-  width: 100%;
+  max-width: fit-content;
+  height: auto;
 }
 
 .loading,

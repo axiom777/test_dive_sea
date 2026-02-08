@@ -1,42 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import type { SwiperRef } from 'swiper/react';
 import { useGetNFTsQuery } from '../../../store/nftApiSlice';
 import Card from '../Card';
 import SliderControls from '../SliderControls';
 import styles from './NFTSlider.module.scss';
 import Title from '../../common/Title';
+import 'swiper/swiper-bundle.css';
 
 export const NFTSlider: React.FC = () => {
   const { data: nfts, isLoading, error } = useGetNFTsQuery();
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [itemsPerView, setItemsPerView] = useState(1);
-
-  useEffect(() => {
-    const updateItemsPerView = () => {
-      const width = window.innerWidth;
-      if (width >= 1440) {
-        setItemsPerView(4);
-      } else if (width >= 1024) {
-        setItemsPerView(3);
-      } else {
-        setItemsPerView(1);
-      }
-    };
-
-    updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
-  }, []);
-
-  const handleNext = () => {
-    if (!nfts) return;
-    setCurrentIndex((prev) => (prev + 1) % nfts.length);
-  };
-
-  const handlePrev = () => {
-    if (!nfts) return;
-    setCurrentIndex((prev) => (prev - 1 + nfts.length) % nfts.length);
-  };
+  const swiperRef = useRef<SwiperRef>(null);
 
   if (isLoading) {
     return <div className={styles.loading}>Loading...</div>;
@@ -50,35 +25,50 @@ export const NFTSlider: React.FC = () => {
     return <div className={styles.empty}>No NFTs available</div>;
   }
 
-  const visibleNFTs = [];
-  for (let i = 0; i < itemsPerView; i++) {
-    visibleNFTs.push(nfts[(currentIndex + i) % nfts.length]);
-  }
+  const handleNext = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  };
+
+  const handlePrev = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  };
 
   return (
     <div className={styles.slider}>
       <Title className={styles.title}>Weekly - Top NFT</Title>
-      <div className={styles.sliderContainer}>
-        <AnimatePresence mode="popLayout">
-          {visibleNFTs.map((nft, index) => (
-            <motion.div
-              key={`${nft.id}-${currentIndex}-${index}`}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className={styles.slide}
-            >
+      <div className={styles.sliderWrapper}>
+        <Swiper
+          ref={swiperRef}
+          modules={[Navigation, Pagination]}
+          spaceBetween={32}
+          slidesPerView={'auto'}
+          loop={true}
+          centeredSlides={true}
+          breakpoints={{
+            768: {
+              spaceBetween: 32,
+            },
+            1024: {
+              spaceBetween: 40,
+            },
+          }}
+          className={styles.swiper}
+        >
+          {nfts.map((nft) => (
+            <SwiperSlide key={nft.id} className={styles.slide}>
               <Card data={nft} />
-            </motion.div>
+            </SwiperSlide>
           ))}
-        </AnimatePresence>
-
+        </Swiper>
       </div>
       <SliderControls
         onPrev={handlePrev}
         onNext={handleNext}
-        currentIndex={currentIndex}
+        currentIndex={0}
         totalItems={nfts.length}
       />
     </div>
