@@ -1,9 +1,12 @@
+import clsx from 'clsx';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import type { RootState } from '../../../store';
-import { toggleMenu } from '../../../store/uiSlice';
+
+import type { RootState } from '@store';
+import { toggleMenu } from '@store/uiSlice';
+import { NAVIGATION_LINKS } from '@utils/constants';
+
 import styles from './TopMenu.module.scss';
-import clsx from 'clsx';
 
 export const Menu: React.FC = () => {
   const dispatch = useDispatch();
@@ -22,17 +25,15 @@ export const Menu: React.FC = () => {
       </button>
       <div className={clsx(styles.menuContent, isMenuOpen && styles.open)}>
         <nav className={styles.menuNav} onClick={() => dispatch(toggleMenu(false))}>
-          {["Discover", "Creators", "Sell", "Stats"].map((name) => (
+          {NAVIGATION_LINKS.map(({ label, href }) => (
             <a
-              key={name}
-              id={name}
-              href={`#${name.toLocaleLowerCase()}`}
+              key={label}
+              href={href}
               className={styles.menuLink}
             >
-              {name}
+              {label}
             </a>
-          )
-          )}
+          ))}
         </nav>
 
       </div>

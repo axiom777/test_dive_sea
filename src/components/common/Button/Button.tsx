@@ -1,7 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import styles from './Button.module.scss';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import React from 'react';
+
+import styles from './Button.module.scss';
+
 
 export type ButtonProps = {
   variant?: 'primary' | 'secondary';

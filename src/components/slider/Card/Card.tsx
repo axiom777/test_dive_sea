@@ -1,10 +1,13 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import type { Item } from '../../../types';
+import React from 'react';
+
+import Button from '@common/Button';
+import Title from '@common/Title';
+import type { Item } from '@types';
+
 import Timer from '../Timer';
-import Button from '../../common/Button';
 import styles from './Card.module.scss';
-import Title from '../../common/Title';
+
 
 export type CardProps = {
   data: Item;

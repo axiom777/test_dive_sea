@@ -1,12 +1,9 @@
 import React from 'react';
-import Logo from '../../common/Logo';
+
+import Logo from '@common/Logo';
+import { FOOTER_LINKS } from '@utils/constants';
+
 import styles from './Footer.module.scss';
-const BOTTOM_MENU = [
-  { name: "Privacy Policy", href: "#privacy" },
-  { name: "Terms & Conditions", href: "#terms" },
-  { name: "About Us", href: "about" },
-  { name: "Contact", href: "#contact" },
-]
 
 export const Footer: React.FC = () => {
   return (
@@ -15,8 +12,8 @@ export const Footer: React.FC = () => {
         <div className={styles.row}>
           <Logo />
           <nav className={styles.footerNav}>
-            {BOTTOM_MENU.map(({ name, href }) => (
-              <a href={href} key={href} className={styles.footerLink}>{name}</a>
+            {FOOTER_LINKS.map(({ label, href }) => (
+              <a href={href} key={href} className={styles.footerLink}>{label}</a>
             ))}
           </nav>
         </div>

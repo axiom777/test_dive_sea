@@ -1,11 +1,12 @@
+import clsx from 'clsx';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import type { RootState } from '../../../store';
 import { setScrolled } from '../../../store/uiSlice';
 import Logo from '../../common/Logo';
-import styles from './Header.module.scss';
-import clsx from 'clsx';
 import TopMenu from '../TopMenu';
+import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();

@@ -1,12 +1,14 @@
 import React, { useRef } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import type { SwiperRef } from 'swiper/react';
-import { useGetNFTsQuery } from '../../../store/nftApiSlice';
+
+import Title from '@common/Title';
+import { useGetNFTsQuery } from '@store/nftApiSlice';
+
 import Card from '../Card';
 import SliderControls from '../SliderControls';
 import styles from './NFTSlider.module.scss';
-import Title from '../../common/Title';
 import 'swiper/swiper-bundle.css';
 
 export const NFTSlider: React.FC = () => {
@@ -68,8 +70,6 @@ export const NFTSlider: React.FC = () => {
       <SliderControls
         onPrev={handlePrev}
         onNext={handleNext}
-        currentIndex={0}
-        totalItems={nfts.length}
       />
     </div>
   );

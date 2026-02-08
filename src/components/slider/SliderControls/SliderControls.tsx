@@ -1,13 +1,12 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import React from 'react';
+
 import { Arrow } from '../Arrow';
 import styles from './SliderControls.module.scss';
 
 export type SliderControlsProps = {
   onPrev: () => void;
   onNext: () => void;
-  currentIndex: number;
-  totalItems: number;
 };
 
 export const SliderControls: React.FC<SliderControlsProps> = ({

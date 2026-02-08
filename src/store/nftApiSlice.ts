@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { Item, CoinGeckoNFT } from '../types';
-import { getRandomImage, generateRandomBid, generateRandomEndTime } from '../utils/helpers';
+import type { Item, CoinGeckoNFT } from '@types';
+import { getRandomImage, generateRandomBid, generateRandomEndTime } from '@utils/helpers';
 
 export const nftApi = createApi({
   reducerPath: 'nftApi',

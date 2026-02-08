@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import { nftApi } from './nftApiSlice';
 import uiReducer from './uiSlice';
 

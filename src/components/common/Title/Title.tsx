@@ -1,7 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import styles from './Title.module.scss';
 import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import React from 'react';
+
+import styles from './Title.module.scss';
+
 
 export type TitleProps = {
   variant?: 'h1' | 'h2' | 'h3';
