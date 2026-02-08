@@ -19,7 +19,7 @@ export const NFTCard: React.FC<NFTCardProps> = ({ nft }) => {
       <div className={styles.imageContainer}>
         <img src={nft.image} alt={nft.name} className={styles.image} />
         <div className={styles.timerWrapper}>
-          <Timer endTime={nft.endTime} />
+          <Timer endTime={new Date(nft.endTime)} />
         </div>
       </div>
       <div className={styles.content}>

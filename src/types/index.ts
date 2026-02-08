@@ -5,7 +5,7 @@ export interface NFTItem {
   symbol: string;
   image: string;
   currentBid: number;
-  endTime: Date;
+  endTime: string;
 }
 
 export interface CoinGeckoNFT {

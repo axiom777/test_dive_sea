@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { UIState } from '../types';
 
 const initialState: UIState = {
@@ -10,17 +10,19 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    setScrolled: (state, action) => {
+    setScrolled: (state, action: PayloadAction<boolean>) => {
       state.isScrolled = action.payload;
     },
-    toggleMenu: (state) => {
-      state.isMenuOpen = !state.isMenuOpen;
-    },
-    closeMenu: (state) => {
-      state.isMenuOpen = false;
+    toggleMenu: (state, action: PayloadAction<boolean | undefined>) => {
+      if (action?.payload !== undefined) {
+        state.isMenuOpen = action.payload
+      } else {
+        state.isMenuOpen = !state.isMenuOpen;
+
+      }
     },
   },
 });
 
-export const { setScrolled, toggleMenu, closeMenu } = uiSlice.actions;
+export const { setScrolled, toggleMenu } = uiSlice.actions;
 export default uiSlice.reducer;

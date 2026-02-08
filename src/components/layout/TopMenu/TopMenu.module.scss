@@ -1,0 +1,93 @@
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
+
+.menuContent {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background-color: $color-bg-card;
+  height: calc(100dvh - 106px);
+  padding: 24px;
+  overflow: auto;
+
+  &.open {
+    transform: translateY(0%);
+  }
+  transform: translateY(-150%);
+  transition: transform $transition-normal ease;
+  z-index: -1;
+
+  @include tablet {
+    position: static;
+    background-color: initial;
+    transform: none;
+    height: unset;
+    padding: 0;
+  }
+}
+
+.menuNav {
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+  overflow: auto;
+
+  @include tablet {
+    flex-direction: row;
+    row-gap: 50px;
+    min-height: auto;
+  }
+}
+
+.menuLink {
+  font-size: 40px;
+  font-weight: 600;
+  color: $color-text-secondary;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 12px 0;
+
+  @include tablet {
+    font-size: 18px;
+  }
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.menuLine {
+  width: 24px;
+  height: 2px;
+  background-color: $color-text-primary;
+  opacity: 1;
+  transform-origin: center;
+  transition: all $transition-fast ease;
+}
+
+.menuButton {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+
+  @include tablet {
+    display: none;
+  }
+
+  &.open {
+    .menuLine:nth-child(2) {
+      opacity: 0;
+    }
+    .menuLine:nth-child(1) {
+      transform: rotate(45deg) translateY(8.5px);
+    }
+    .menuLine:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8.5px);
+    }
+  }
+}

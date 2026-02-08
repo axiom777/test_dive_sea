@@ -1,6 +1,5 @@
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import Menu from './components/layout/Menu';
 import NFTSlider from './components/slider/NFTSlider';
 import './styles/main.scss';
 
@@ -12,7 +11,6 @@ function App() {
         <NFTSlider />
       </main>
       <Footer />
-      <Menu />
     </div>
   );
 }

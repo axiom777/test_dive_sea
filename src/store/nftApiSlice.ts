@@ -11,6 +11,7 @@ export const nftApi = createApi({
     getNFTs: builder.query<NFTItem[], void>({
       query: () => '/nfts/list',
       transformResponse: (response: CoinGeckoNFT[]) => {
+        console.log(response)
         // Transform data and add random values
         return response.slice(0, 10).map((item, index) => ({
           id: item.id,
@@ -18,7 +19,7 @@ export const nftApi = createApi({
           symbol: item.symbol,
           image: getRandomImage(index),
           currentBid: generateRandomBid(),
-          endTime: generateRandomEndTime()
+          endTime: generateRandomEndTime().toISOString()
         }));
       },
     }),

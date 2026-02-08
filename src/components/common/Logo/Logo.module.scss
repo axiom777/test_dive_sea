@@ -1,10 +1,10 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: $spacing-sm;
   cursor: pointer;
   transition: transform $transition-fast ease;
 
@@ -13,18 +13,28 @@
   }
 }
 
-.logoImage {
-  width: 32px;
-  height: 32px;
-
+.header {
   @include tablet {
-    width: 40px;
-    height: 40px;
+    display: none;
   }
 
   @include desktop {
-    width: 48px;
-    height: 48px;
+    display: none;
+  }
+}
+
+.logoImage {
+  width: 46px;
+  height: 46px;
+
+  @include tablet {
+    width: 38px;
+    height: 38px;
+  }
+
+  @include desktop {
+    width: 53px;
+    height: 53px;
   }
 }
 

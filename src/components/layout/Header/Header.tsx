@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { RootState } from '../../../store';
-import { setScrolled, toggleMenu } from '../../../store/uiSlice';
+import { setScrolled } from '../../../store/uiSlice';
 import Logo from '../../common/Logo';
 import styles from './Header.module.scss';
+import clsx from 'clsx';
+import TopMenu from '../TopMenu';
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const isScrolled = useSelector((state: RootState) => state.ui.isScrolled);
+  const isMenuOpen = useSelector((state: RootState) => state.ui.isMenuOpen);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,24 +21,14 @@ export const Header: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
+    <header className={clsx(
+      styles.header,
+      isScrolled && styles.scrolled,
+      isMenuOpen && styles.open
+    )}>
       <div className={styles.container}>
-        <Logo />
-        <nav className={styles.nav}>
-          <a href="#discover" className={styles.navLink}>Discover</a>
-          <a href="#creators" className={styles.navLink}>Creators</a>
-          <a href="#sell" className={styles.navLink}>Sell</a>
-          <a href="#stats" className={styles.navLink}>Stats</a>
-        </nav>
-        <button 
-          className={styles.menuButton} 
-          aria-label="Open menu"
-          onClick={() => dispatch(toggleMenu())}
-        >
-          <span className={styles.menuLine}></span>
-          <span className={styles.menuLine}></span>
-          <span className={styles.menuLine}></span>
-        </button>
+        <Logo position="header" />
+        <TopMenu />
       </div>
     </header>
   );

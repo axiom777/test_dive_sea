@@ -1,19 +1,40 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: $z-index-header;
-  padding: 16px 24px;
-  transition: background-color $transition-normal ease, box-shadow $transition-normal ease;
+  padding: 30px 30px;
+
+  @include tablet {
+    padding: 33px 30px;
+  }
+  @include desktop {
+    padding: 46px 30px;
+  }
+
+  transition: all $transition-normal ease;
 
   &.scrolled {
     background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: $shadow-nav;
+    @include tablet {
+      padding: 18px 30px;
+      margin-bottom: 33px - 18px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    @include desktop {
+      margin-bottom: 46px - 18px;
+    }
+  }
+
+  &.open {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-color: $color-bg-card;
   }
 }
 
@@ -24,6 +45,14 @@
   align-items: center;
   justify-content: space-between;
 
+  @include tablet {
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
+  @include desktop {
+    gap: 66px;
+  }
   @include large-desktop {
     max-width: 1920px;
   }
@@ -31,6 +60,8 @@
 
 .nav {
   display: none;
+  color: $color-text-secondary;
+  text-transform: uppercase;
 
   @include tablet {
     display: flex;
@@ -39,7 +70,7 @@
 }
 
 .navLink {
-  color: $color-text-primary;
+  color: inherit;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -47,7 +78,7 @@
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -4px;
     left: 0;
@@ -62,27 +93,6 @@
   }
 
   &:hover {
-    color: $color-text-secondary;
+    color: $color-text-primary;
   }
-}
-
-.menuButton {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-
-  @include tablet {
-    display: none;
-  }
-}
-
-.menuLine {
-  width: 24px;
-  height: 2px;
-  background-color: $color-text-primary;
-  transition: all $transition-fast ease;
 }
