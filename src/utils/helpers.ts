@@ -1,10 +1,10 @@
 // Available images from public/slider_images/
 const NFT_IMAGES = [
-  '/slider_images/sunglass-1.png',
-  '/slider_images/sunglass-2.png',
-  '/slider_images/sunglass-3.png',
-  '/slider_images/sunglass-4.png',
-  '/slider_images/sunglass-5.png',
+  '/test_dive_sea/slider_images/sunglass-1.png',
+  '/test_dive_sea/slider_images/sunglass-2.png',
+  '/test_dive_sea/slider_images/sunglass-3.png',
+  '/test_dive_sea/slider_images/sunglass-4.png',
+  '/test_dive_sea/slider_images/sunglass-5.png',
 ];
 
 export const getRandomImage = (index: number): string => {
