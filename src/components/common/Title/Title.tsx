@@ -16,13 +16,14 @@ export const Title: React.FC<TitleProps> = ({
   children,
   className,
   variant = 'h1',
-  delay = 0 }) => {
+  delay = 0
+}) => {
   const Tag = variant;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ duration: 0.6, delay: delay / 1000 }}
     >
       <Tag className={

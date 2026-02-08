@@ -50,6 +50,7 @@ export const NFTSlider: React.FC = () => {
           slidesPerView={'auto'}
           loop={true}
           centeredSlides={true}
+          initialSlide={Math.min(10, nfts.length - 1)}
           breakpoints={{
             768: {
               spaceBetween: 32,
@@ -60,9 +61,9 @@ export const NFTSlider: React.FC = () => {
           }}
           className={styles.swiper}
         >
-          {nfts.map((nft) => (
+          {nfts.map((nft, index) => (
             <SwiperSlide key={nft.id} className={styles.slide}>
-              <Card data={nft} />
+              <Card data={nft} index={index} />
             </SwiperSlide>
           ))}
         </Swiper>

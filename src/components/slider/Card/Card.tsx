@@ -11,14 +11,25 @@ import styles from './Card.module.scss';
 
 export type CardProps = {
   data: Item;
+  index?: number;
 };
 
-export const Card: React.FC<CardProps> = ({ data }) => {
+export const Card: React.FC<CardProps> = ({ data, index = 0 }) => {
+  // Only animate first 20 slides with wave effect
+  const shouldAnimate = index < 20;
+  const delay = shouldAnimate ? index * 0.1 : 0;
+  
   return (
     <motion.div
       className={styles.card}
+      initial={shouldAnimate ? { opacity: 0, x: -50 } : { opacity: 1, x: 0 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ 
+        duration: 0.5,
+        delay: delay,
+        ease: 'easeOut'
+      }}
       whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3 }}
     >
       <div className={styles.imageContainer}>
         <img src={data.image} alt={data.name} className={styles.image} />
