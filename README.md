@@ -1,73 +1,244 @@
-# React + TypeScript + Vite
+# NFT Slider - Тестовое задание
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Адаптивная вёрстка страницы с NFT-слайдером, разработанная в соответствии с предоставленным дизайном в Figma.
 
-Currently, two official plugins are available:
+## 📋 Обзор проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Проект представляет собой современное веб-приложение на React с адаптивным слайдером NFT-коллекций. Данные загружаются из публичного API CoinGecko, а таймеры и ставки генерируются на стороне клиента.
 
-## React Compiler
+## 🛠 Технологический стек
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- **Фреймворк**: React 19.2.0
+- **Сборщик**: Vite 7.2.4
+- **Язык**: TypeScript 5.9.3
+- **Управление состоянием**: Redux Toolkit 2.11.2
+- **Стилизация**: SCSS (Sass 1.97.3)
+- **Анимации**: Framer Motion 12.33.0
+- **Слайдер**: Swiper 12.1.0
+- **HTTP-клиент**: Redux Toolkit Query (встроенный в RTK)
+- **Утилиты**: clsx 2.1.1
 
-## Expanding the ESLint configuration
+## 📦 Установка и запуск
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Требования
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js версии 18 или выше
+- npm, yarn или pnpm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Локальная установка
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Клонирование репозитория**
+
+```bash
+git clone https://github.com/your-username/MorozovaIP.git
+cd MorozovaIP
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. **Установка зависимостей**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+3. **Запуск сервера разработки**
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу: `http://localhost:5173`
+
+4. **Сборка для продакшена**
+
+```bash
+npm run build
+```
+
+5. **Предпросмотр продакшн-сборки**
+
+```bash
+npm run preview
+```
+
+### Запуск с Docker
+
+1. **Сборка Docker-образа**
+
+```bash
+docker build -t nft-slider .
+```
+
+2. **Запуск контейнера**
+
+```bash
+docker run -p 4173:4173 nft-slider
+```
+
+Приложение будет доступно по адресу: `http://localhost:4173`
+
+## 📁 Структура проекта
+
+```
+MorozovaIP/
+├── public/
+│   └── slider_images/          # Изображения для NFT-карточек
+├── src/
+│   ├── components/
+│   │   ├── common/              # Общие компоненты (Button, Logo, Title)
+│   │   ├── layout/              # Компоненты верстки (Header, Footer, TopMenu)
+│   │   └── slider/              # Компоненты слайдера (Card, NFTSlider, Timer, etc.)
+│   ├── store/                   # Redux store и slices
+│   ├── styles/                  # Глобальные стили и SCSS-модули
+│   ├── types/                   # TypeScript типы
+│   ├── utils/                   # Вспомогательные функции и константы
+│   ├── App.tsx                  # Главный компонент приложения
+│   └── main.tsx                 # Точка входа приложения
+├── Dockerfile                   # Конфигурация Docker
+├── package.json                 # Зависимости и скрипты
+├── tsconfig.json                # Конфигурация TypeScript
+├── vite.config.ts               # Конфигурация Vite
+└── README.md                    # Документация проекта
+```
+
+## 🎯 Основные возможности
+
+### Слайдер NFT
+
+- **Адаптивная вёрстка**: Корректное отображение на desktop (1440px+), tablet (1024px+) и mobile (375px+)
+- **Асинхронная загрузка данных**: Использование RTK Query для загрузки данных из API CoinGecko
+- **Динамические таймеры**: Обратный отсчёт до окончания аукциона для каждой карточки
+- **Случайные ставки**: Генерация текущей ставки в диапазоне 0.5-5.0 ETH
+- **Случайные изображения**: Циклическая подстановка изображений из набора
+- **Плавные анимации**: Использование Framer Motion для анимации карточек и элементов интерфейса
+- **Управление слайдером**: Кнопки навигации и поддержка свайпов на сенсорных устройствах
+
+### API
+
+Проект использует публичный API CoinGecko для получения данных о NFT:
+
+```
+GET https://api.coingecko.com/api/v3/nfts/list
+```
+
+**Используемые поля из ответа API:**
+- `id` - уникальный идентификатор
+- `name` - название NFT
+- `symbol` - символ/тикер
+
+**Генерируемые на клиенте данные:**
+- `image` - случайное изображение из набора
+- `currentBid` - случайная ставка (0.5-5.0 ETH)
+- `endTime` - случайное время окончания (1-24 часа от текущего момента)
+
+## 🎨 Стилизация
+
+Проект использует SCSS с модульной архитектурой:
+
+### Глобальные переменные (`src/styles/_variables.scss`)
+
+- Цвета: основные, вторичные, текстовые, фоновые
+- Отступы: xs, sm, md, lg, xl, 2xl
+- Брейкпоинты: mobile (375px), tablet (1024px), desktop (1440px), large (1920px)
+- Радиусы скругления: sm, md, lg, xl
+- Тени: карточек, навигации
+- Переходы: быстрые, нормальные, медленные
+- Z-index: меню, хедер, модальные окна
+
+### Миксины (`src/styles/_mixins.scss`)
+
+- Адаптивные брейкпоинты
+- Flexbox-утилиты
+- Типографика
+- Анимации
+- Позиционирование
+- Сброс стилей
+
+## 🔄 Управление состоянием
+
+### Redux Store
+
+Проект использует Redux Toolkit для управления состоянием:
+
+**`nftApiSlice.ts`** - API-слайс для работы с CoinGecko API
+- `getNFTs` - запрос списка NFT с трансформацией данных
+
+**`uiSlice.ts`** - UI-слайс для управления состоянием интерфейса
+- `isScrolled` - состояние прокрутки страницы
+- `isMenuOpen` - состояние мобильного меню
+
+## 📱 Адаптивность
+
+Проект полностью адаптивен и поддерживает следующие размеры экранов:
+
+- **Mobile**: 375px - 1023px
+- **Tablet**: 1024px - 1439px
+- **Desktop**: 1440px - 1919px
+- **Large Desktop**: 1920px+
+
+## 🧪 Доступные скрипты
+
+```bash
+npm run dev          # Запуск сервера разработки
+npm run build        # Сборка для продакшена
+npm run preview      # Предпросмотр продакшн-сборки
+npm run lint         # Проверка кода ESLint
+npm run lint:fix     # Автоматическое исправление ошибок ESLint
+```
+
+## 📊 Предварительная оценка
+
+### Время выполнения
+
+**Ориентировочное время**: 8-10 часов
+
+**Распределение по этапам**:
+- Настройка проекта и окружения: 1 час
+- Разработка структуры компонентов: 1.5 часа
+- Интеграция API и Redux: 1.5 часа
+- Реализация слайдера и карточек: 2 часа
+- Стилизация и адаптивность: 1.5 часа
+- Анимации и интерактивность: 1 час
+- Тестирование и отладка: 1 час
+
+### Дата сдачи
+
+**Предполагаемая дата**: 2026-02-08
+
+## 🐛 Обработка ошибок
+
+Приложение включает обработку следующих состояний:
+
+- **Загрузка**: Отображение индикатора загрузки при получении данных
+- **Ошибка**: Отображение сообщения об ошибке при неудачном запросе
+- **Пустые данные**: Отображение сообщения при отсутствии NFT
+
+## 🔧 Конфигурация
+
+### Vite
+
+Конфигурация включает:
+- Плагин React SWC для быстрой компиляции
+- Алиасы путей для удобного импорта (`@`, `@components`, `@store`, и т.д.)
+
+### TypeScript
+
+Конфигурация включает:
+- Строгая проверка типов
+- Поддержка JSX и React
+- Путь к модулям с алиасами
+
+### ESLint
+
+Конфигурация включает:
+- Правила для TypeScript
+- Правила для React Hooks
+- Правила для импортов
+- Форматирование кода
+
+## 📝 Лицензия
+
+Этот проект создан в качестве тестового задания.
+
+---
+
+**Ссылка на дизайн в Figma**: https://www.figma.com/design/qj4RLCkXNzYKdajhCYIGrT/Frontend-test--UPD-?node-id=7124-27&p=f&t=syuCZ0RlynWVY9lG-0
