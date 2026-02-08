@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { useRef } from 'react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,6 +11,29 @@ import Card from '../Card';
 import SliderControls from '../SliderControls';
 import styles from './NFTSlider.module.scss';
 import 'swiper/swiper-bundle.css';
+
+// Animation variants for staggered card animations
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.5
+    }
+  }
+};
 
 export const NFTSlider: React.FC = () => {
   const { data: nfts, isLoading, error } = useGetNFTsQuery();
@@ -42,7 +66,12 @@ export const NFTSlider: React.FC = () => {
   return (
     <div className={styles.slider}>
       <Title className={styles.title}>Weekly - Top NFT</Title>
-      <div className={styles.sliderWrapper}>
+      <motion.div 
+        className={styles.sliderWrapper}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <Swiper
           ref={swiperRef}
           modules={[Navigation, Pagination]}
@@ -52,22 +81,21 @@ export const NFTSlider: React.FC = () => {
           centeredSlides={true}
           initialSlide={Math.min(10, nfts.length - 1)}
           breakpoints={{
-            768: {
-              spaceBetween: 32,
-            },
             1024: {
               spaceBetween: 40,
             },
           }}
           className={styles.swiper}
         >
-          {nfts.map((nft, index) => (
+          {nfts.map((nft) => (
             <SwiperSlide key={nft.id} className={styles.slide}>
-              <Card data={nft} index={index} />
+              <motion.div variants={cardVariants}>
+                <Card data={nft} />
+              </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
-      </div>
+      </motion.div>
       <SliderControls
         onPrev={handlePrev}
         onNext={handleNext}

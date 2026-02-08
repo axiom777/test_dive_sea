@@ -9,6 +9,18 @@ export type SliderControlsProps = {
   onNext: () => void;
 };
 
+// Animation variants for arrow buttons
+const buttonVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      delay: 0.8
+    }
+  }
+};
+
 export const SliderControls: React.FC<SliderControlsProps> = ({
   onPrev,
   onNext,
@@ -19,8 +31,13 @@ export const SliderControls: React.FC<SliderControlsProps> = ({
       <motion.button
         className={styles.navButton}
         onClick={onPrev}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05, backgroundColor: 'var(--color-bg-secondary)' }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.2 }}
         aria-label="Previous slide"
+        variants={buttonVariants}
+        initial="hidden"
+        animate="visible"
       >
         <Arrow direction="left" />
       </motion.button>
@@ -28,8 +45,13 @@ export const SliderControls: React.FC<SliderControlsProps> = ({
       <motion.button
         className={styles.navButton}
         onClick={onNext}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05, backgroundColor: 'var(--color-bg-secondary)' }}
+        whileTap={{ scale: 0.95 }}
+        transition={{ duration: 0.2 }}
         aria-label="Next slide"
+        variants={buttonVariants}
+        initial="hidden"
+        animate="visible"
       >
         <Arrow direction="right" />
       </motion.button>

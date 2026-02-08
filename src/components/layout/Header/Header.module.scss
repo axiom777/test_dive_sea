@@ -4,8 +4,11 @@
 .header {
   position: sticky;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: $z-index-header;
   padding: 30px 30px;
+  width: 100%;
 
   @include tablet {
     padding: 33px 30px;

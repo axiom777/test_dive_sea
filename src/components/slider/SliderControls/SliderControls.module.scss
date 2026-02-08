@@ -18,10 +18,6 @@
   color: $color-text-primary;
   cursor: pointer;
   transition: all $transition-fast ease;
-
-  &:hover {
-    background-color: $color-bg-secondary;
-  }
 }
 .delimeter {
   width: 2px;
