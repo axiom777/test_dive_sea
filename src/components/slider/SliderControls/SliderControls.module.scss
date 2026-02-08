@@ -1,47 +1,30 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .controls {
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 24px;
-  margin-top: 32px;
-}
-
-.navButton {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
   background-color: $color-bg-card;
-  border: 2px solid $color-text-primary;
-  color: $color-text-primary;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all $transition-fast ease;
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  &:hover {
-    background-color: $color-text-primary;
-    color: $color-bg-card;
-  }
-}
-
-.progressContainer {
-  flex: 1;
-  height: 4px;
-  background-color: $color-bg-secondary;
-  border-radius: 2px;
+  border-radius: 16px;
+  box-shadow: $shadow-nav;
   overflow: hidden;
 }
 
-.progressBar {
-  height: 100%;
-  background-color: $color-text-primary;
-  transition: width $transition-normal ease;
+.navButton {
+  padding: 20px;
+  border: none;
+  background-color: $color-bg-card;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: all $transition-fast ease;
+
+  &:hover {
+    background-color: $color-bg-secondary;
+  }
+}
+.delimeter {
+  width: 2px;
+  height: 16px;
+  background-color: #e6e8ec;
 }
