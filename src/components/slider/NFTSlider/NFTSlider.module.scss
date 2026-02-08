@@ -15,10 +15,8 @@
 }
 
 .title {
-  font-size: 32px;
-  font-weight: 600;
-  color: $color-text-primary;
-  margin: 0 0 32px 0;
+  color: $color-text-title;
+  text-align: center;
 
   @include tablet {
     font-size: 40px;

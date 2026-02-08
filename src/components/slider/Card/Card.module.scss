@@ -1,12 +1,21 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .card {
+  display: flex;
+  max-width: 281px;
+  flex-direction: column;
+  padding: 14px;
+  gap: 14px;
   background-color: $color-bg-card;
   border-radius: $radius-lg;
   box-shadow: $shadow-card;
   transition: box-shadow $transition-normal ease;
   overflow: hidden;
+
+  @include desktop {
+    gap: 20px;
+  }
 
   &:hover {
     box-shadow: $shadow-card-hover;
@@ -15,6 +24,8 @@
 
 .imageContainer {
   position: relative;
+  border-radius: $radius-lg;
+  overflow: hidden;
   width: 100%;
   padding-top: 100%;
 }
@@ -34,16 +45,8 @@
   right: 12px;
 }
 
-.content {
-  padding: 16px;
-}
-
 .name {
-  font-size: 18px;
-  font-weight: 600;
   color: $color-text-primary;
-  margin: 0 0 12px 0;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

@@ -1,27 +1,21 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .title {
   font-weight: 600;
   line-height: 1.2;
-  color: $color-text-title;
   margin: 0;
-  text-align: center;
 }
 
 .h1 {
-  font-size: 32px;
+  font-size: 30px;
 
   @include tablet {
-    font-size: 48px;
+    font-size: 32px;
   }
 
   @include desktop {
-    font-size: 64px;
-  }
-
-  @include large-desktop {
-    font-size: 72px;
+    font-size: 46px;
   }
 }
 
@@ -42,17 +36,9 @@
 }
 
 .h3 {
-  font-size: 24px;
-
-  @include tablet {
-    font-size: 28px;
-  }
+  font-size: 16px;
 
   @include desktop {
-    font-size: 32px;
-  }
-
-  @include large-desktop {
-    font-size: 36px;
+    font-size: 22px;
   }
 }

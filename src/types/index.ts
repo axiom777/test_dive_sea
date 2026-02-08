@@ -1,5 +1,5 @@
 // NFT Types
-export interface NFTItem {
+export interface Item {
   id: string;
   name: string;
   symbol: string;
@@ -35,7 +35,7 @@ export interface TitleProps {
 }
 
 export interface NFTCardProps {
-  nft: NFTItem;
+  nft: Item;
 }
 
 export interface TimerProps {

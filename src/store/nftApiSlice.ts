@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import type { NFTItem, CoinGeckoNFT } from '../types';
+import type { Item, CoinGeckoNFT } from '../types';
 import { getRandomImage, generateRandomBid, generateRandomEndTime } from '../utils/helpers';
 
 export const nftApi = createApi({
@@ -8,7 +8,7 @@ export const nftApi = createApi({
     baseUrl: 'https://api.coingecko.com/api/v3',
   }),
   endpoints: (builder) => ({
-    getNFTs: builder.query<NFTItem[], void>({
+    getNFTs: builder.query<Item[], void>({
       query: () => '/nfts/list',
       transformResponse: (response: CoinGeckoNFT[]) => {
         console.log(response)
