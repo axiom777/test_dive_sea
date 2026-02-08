@@ -9,7 +9,7 @@
   flex-direction: column;
 
   @include desktop {
-    padding: 70px;
+    padding: 70px 0;
     gap: 70px;
   }
 }
