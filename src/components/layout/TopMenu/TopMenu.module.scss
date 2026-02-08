@@ -5,7 +5,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 100%;
+  top: 99%;
   background-color: $color-bg-card;
   height: calc(100dvh - 106px);
   padding: 24px;
@@ -14,7 +14,7 @@
   &.open {
     transform: translateY(0%);
   }
-  transform: translateY(-150%);
+  transform: translateY(-120%);
   transition: transform $transition-normal ease;
   z-index: -1;
 

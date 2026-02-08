@@ -60,13 +60,34 @@
 
 .bidInfo {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 6px;
+}
+.bidLabel {
+  font-size: 11px;
+  color: #94a3b8;
+  @include desktop {
+    font-size: 14px;
+  }
+}
+
+.bidPrice {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+
+  @include desktop {
+    font-size: 16px;
+  }
 }
 
 .ethIcon {
   width: 16px;
   height: 16px;
+  @include desktop {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .bidAmount {
