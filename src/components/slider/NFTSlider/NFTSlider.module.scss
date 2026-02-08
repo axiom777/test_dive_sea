@@ -1,13 +1,16 @@
-@use '@styles/variables' as *;
-@use '@styles/mixins' as *;
+@use "@styles/variables" as *;
+@use "@styles/mixins" as *;
 
 .slider {
-  padding: 120px 24px 48px;
-  max-width: 1440px;
   margin: 0 auto;
+  padding: 50px 0;
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
 
-  @include large-desktop {
-    max-width: 1920px;
+  @include desktop {
+    padding: 70px;
+    gap: 70px;
   }
 }
 

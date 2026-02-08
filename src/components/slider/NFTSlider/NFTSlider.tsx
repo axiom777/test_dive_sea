@@ -4,6 +4,7 @@ import { useGetNFTsQuery } from '../../../store/nftApiSlice';
 import NFTCard from '../NFTCard';
 import SliderControls from '../SliderControls';
 import styles from './NFTSlider.module.scss';
+import Title from '../../common/Title';
 
 export const NFTSlider: React.FC = () => {
   const { data: nfts, isLoading, error } = useGetNFTsQuery();
@@ -56,29 +57,32 @@ export const NFTSlider: React.FC = () => {
 
   return (
     <div className={styles.slider}>
-      <h2 className={styles.title}>Trending NFTs</h2>
-      <div className={styles.sliderContainer}>
-        <AnimatePresence mode="popLayout">
-          {visibleNFTs.map((nft, index) => (
-            <motion.div
-              key={`${nft.id}-${currentIndex}-${index}`}
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className={styles.slide}
-            >
-              <NFTCard nft={nft} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+      <Title className={styles.title}>Weekly - Top NFT</Title>
+      <div>
+        <div className={styles.sliderContainer}>
+          <AnimatePresence mode="popLayout">
+            {visibleNFTs.map((nft, index) => (
+              <motion.div
+                key={`${nft.id}-${currentIndex}-${index}`}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className={styles.slide}
+              >
+                <NFTCard nft={nft} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+        <SliderControls
+          onPrev={handlePrev}
+          onNext={handleNext}
+          currentIndex={currentIndex}
+          totalItems={nfts.length}
+        />
+
       </div>
-      <SliderControls
-        onPrev={handlePrev}
-        onNext={handleNext}
-        currentIndex={currentIndex}
-        totalItems={nfts.length}
-      />
     </div>
   );
 };
