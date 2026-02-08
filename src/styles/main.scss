@@ -1,0 +1,19 @@
+// Import SCSS files
+@import './variables';
+@import './mixins';
+@import './reset';
+
+// Global styles
+body {
+  min-height: 100vh;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
