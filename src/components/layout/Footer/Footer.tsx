@@ -23,6 +23,7 @@ export const Footer: React.FC = () => {
         </div>
         <div className={styles.copyright}>
           © 2023
+          <span>DiveSea All Rights Reserved.</span>
         </div>
       </div>
     </footer>
