@@ -219,14 +219,21 @@ npm run lint:fix     # Автоматическое исправление ош�
    - Нажмите **Review deployments**
    - Одобрите развертывание
 
-3. **Запустите развертывание**:
+3. **Запустите развертывание вручную**:
    ```bash
    git add .
-   git commit -m "Enable GitHub Pages deployment"
+   git commit -m "Update application"
    git push origin main
    ```
+   
+   Затем:
+   - Перейдите на вкладку **Actions**
+   - Нажмите на "Deploy to GitHub Pages" workflow
+   - Нажмите кнопку **Run workflow**
+   - Выберите ветку (обычно `main`)
+   - Нажмите **Run workflow** для запуска развертывания
 
-Workflow автоматически соберёт проект и развернёт его на GitHub Pages.
+Workflow соберёт проект и развернёт его на GitHub Pages.
 
 ### Дополнительная информация
 

@@ -20,7 +20,7 @@ export default defineConfig({
 ### 2. GitHub Actions Workflow
 The deployment pipeline is defined in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). This workflow:
 
-- Triggers on push to `main` or `master` branches
+- Triggers only manually via workflow_dispatch
 - Builds the project using `npm run build`
 - Deploys the `dist` folder to GitHub Pages
 
@@ -59,22 +59,27 @@ If you see an error like "Branch 'main' is not allowed to deploy to github-pages
 4. Click **Review deployments**
 5. Approve the deployment
 
-### Step 3: Push to Main Branch
+### Step 3: Trigger Manual Deployment
 
-The workflow will automatically trigger when you push to the `main` or `master` branch:
+The workflow only runs manually. To deploy:
 
+1. Push your changes to the repository:
 ```bash
 git add .
-git commit -m "Enable GitHub Pages deployment"
+git commit -m "Update application"
 git push origin main
 ```
 
+2. Go to the **Actions** tab in your GitHub repository
+3. Click on "Deploy to GitHub Pages" workflow
+4. Click **Run workflow** button
+5. Select the branch (usually `main`)
+6. Click **Run workflow** to start the deployment
+
 ### Step 4: Monitor Deployment
 
-1. Go to the **Actions** tab in your GitHub repository
-2. Click on the "Deploy to GitHub Pages" workflow run
-3. Wait for the workflow to complete (usually takes 1-2 minutes)
-4. Your site will be available at: [https://axiom777.github.io/test_dive_sea/](https://axiom777.github.io/test_dive_sea/)
+1. Wait for the workflow to complete (usually takes 1-2 minutes)
+2. Your site will be available at: [https://axiom777.github.io/test_dive_sea/](https://axiom777.github.io/test_dive_sea/)
 
 ## Manual Deployment (Optional)
 
