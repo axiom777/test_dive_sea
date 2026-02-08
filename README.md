@@ -189,6 +189,49 @@ npm run lint         # Проверка кода ESLint
 npm run lint:fix     # Автоматическое исправление ошибок ESLint
 ```
 
+## 🚀 Развертывание на GitHub Pages
+
+Проект настроен для автоматического развертывания на GitHub Pages через GitHub Actions.
+
+### Развернутая версия
+
+Приложение доступно по адресу: [https://axiom777.github.io/test_dive_sea/](https://axiom777.github.io/test_dive_sea/)
+
+### Настройка развертывания
+
+1. **Включите GitHub Pages**:
+   - Перейдите в **Settings** → **Pages**
+   - В разделе **Build and deployment** выберите **GitHub Actions** как источник
+
+2. **Настройте защиту окружения** (если необходимо):
+   - Если появляется ошибка "Branch 'main' is not allowed to deploy to github-pages due to environment protection rules", у вас есть два варианта:
+   
+   **Вариант A: Удалить правила защиты окружения**
+   - Перейдите в **Settings** → **Environments**
+   - Нажмите на окружение `github-pages`
+   - В разделе **Deployment branches** удалите ограничения или измените на "No restrictions"
+   - Сохраните изменения
+
+   **Вариант B: Одобрить развертывание вручную**
+   - Перейдите на вкладку **Actions**
+   - Нажмите на неудачный запуск workflow
+   - Нажмите на job "deploy"
+   - Нажмите **Review deployments**
+   - Одобрите развертывание
+
+3. **Запустите развертывание**:
+   ```bash
+   git add .
+   git commit -m "Enable GitHub Pages deployment"
+   git push origin main
+   ```
+
+Workflow автоматически соберёт проект и развернёт его на GitHub Pages.
+
+### Дополнительная информация
+
+Подробная документация по развертыванию доступна в файле [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
 ## 📊 Предварительная оценка
 
 ### Время выполнения

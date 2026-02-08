@@ -74,7 +74,7 @@ git push origin main
 1. Go to the **Actions** tab in your GitHub repository
 2. Click on the "Deploy to GitHub Pages" workflow run
 3. Wait for the workflow to complete (usually takes 1-2 minutes)
-4. Your site will be available at: `https://your-username.github.io/test_dive_sea/`
+4. Your site will be available at: [https://axiom777.github.io/test_dive_sea/](https://axiom777.github.io/test_dive_sea/)
 
 ## Manual Deployment (Optional)
 
