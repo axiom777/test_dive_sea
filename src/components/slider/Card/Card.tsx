@@ -31,7 +31,7 @@ export const Card: React.FC<CardProps> = ({ data }) => {
           </svg>
           <span className={styles.bidAmount}>{data.currentBid.toFixed(2)} ETH</span>
         </div>
-        <Button variant="secondary" size="sm">Place Bid</Button>
+        <Button variant="primary">Place Bid</Button>
       </div>
     </motion.div>
   );
